@@ -50,7 +50,17 @@ var employees = [
     3. Return the updated employee array.
 */
 
-//Code Here
+function employeeUpdater(){
+  for(i=0;i < employees.length;i++){
+    if (employees[i].firstName == "Theo"){
+      employees.splice(i, 1);
+    }
+    if (employees[i].firstName =="Lorie"){
+      employees[i].department = "HR";
+    }
+  }
+  return employees;
+}
 
 
 
@@ -67,8 +77,23 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
     2. Use nested for loops to check for duplicate numbers, and then remove the duplicates from the array.
     3. Return the updated array.
 */
-
-//Code Here
+function removeDuplicates(){
+  let accidentsCpy = workplaceAccidents.slice()
+  let dupCount = 0;
+  for(let i=0;i<workplaceAccidents.length;i++)
+  {
+    for(let j=0;j<accidentsCpy.length;j++){
+      if (workplaceAccidents[i] == accidentsCpy[j]){
+        dupCount += 1;
+        if (dupCount > 1){
+          accidentsCpy.splice(j, 1);
+        }
+      }
+    }
+    dupCount = 0;
+  }
+  return accidentsCpy;
+}
 
 
 
@@ -97,10 +122,8 @@ var cat = {
 */
 
 //Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
-
-
+var grumpyActivity = cat.catFriends[0].activities[1];
+var fluffy2ndFriend = cat.catFriends[1].name;
 
 ////////// PROBLEM 4 //////////
 
@@ -138,7 +161,11 @@ var myCar = {
     3. Change atFaultForAccident from true to false.
 */
 
-//Code Here
+function recordCleaner(){
+  for(i=0;i<myCar.accidents.length;i++){
+      myCar.accidents[i].atFaultForAccident = false;  
+  }
+}
 
 
 
@@ -157,6 +184,19 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
     4. Return the modified numsArr.
 */
 
-//Code Here
-
-
+function looper(){
+  let innerArr = []; 
+  for(x=0;x < numsArr.length; x++){
+      innerArr = numsArr[x].slice();
+      for(y=0;y < innerArr.length;y++){
+      if(innerArr[y] % 2 == 1){
+        innerArr[y] = "odd"
+      }
+      if(innerArr[y] % 2 == 0){
+        innerArr[y] = "even"
+      }
+    }
+    numsArr[x] = innerArr.slice();
+  }
+  return numsArr;
+}
