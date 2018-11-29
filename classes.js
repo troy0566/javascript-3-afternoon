@@ -29,7 +29,21 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee {
+  constructor(firstname, lastname, email, age){
+    this.first_name = firstname;
+    this.last_name = lastname;
+    this.email = email;
+    this.age = age;
+  }
+
+  makeWidget(){
+    return (this.first_name + " " + this.last_name + " Widget");
+  }
+}
+
+let me = new Employee("Dallin", "Anderson", "Dallin@DallinDallin.com", 25);
+
 
 
 
@@ -49,7 +63,27 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager {
+  constructor(first_name, last_name, email, age){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+    this.reports = [];
+  }
+
+  makeWidget(){
+    returns (this.first_name + " " + this.last_name + " Widget");
+  }
+
+  hire(Employee){
+    this.reports.push(Employee);
+  }
+
+  fire(fireIdx){
+    this.reports.splice(fireIdx, 1);
+  }
+}
 
 
 
@@ -75,9 +109,57 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager {
+  constructor(first_name, last_name, email, age){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+    this.reports = [];
+    this.title = "Not a manager";
+    this.bonus = 0;
+  }
+
+  makeWidget(){
+    returns (this.first_name + " " + this.last_name + " Widget");
+  }
+
+  hire(Employee){
+    this.reports.push(Employee);
+    this.updateManager(this.reports.length);
+  }
+
+  fire(fireIdx){
+    this.reports.splice(fireIdx, 1);
+    this.updateManager(this.reports.length);
+    this.addBonus(100);
+   }
+  addBonus(bonus){
+    this.bonus += bonus;
+  }
 
 
+  updateManager(rptNum){
+    if(rptNum === 0){
+      this.title = "Not a manager";
+    }
+    if (rptNum >= 1 && rptNum <= 3){
+        this.title = "Barely Manager"
+    }
+    if (rptNum >= 4 && rptNum <= 10){
+       this.title = "Mostly Manager"
+    }
+    if (rptNum >= 11 && rptNum <= 50){
+      this.title = "Manager"
+    }
+    if (rptNum >= 51 && rptNum <= 100){
+      this.title = "Manager Plus"  
+    }
+    if (rptNum >= 101){
+      this.title = "Bestest Manager"
+    }
+  }  
+}
 
 ////////// PROBLEM 4 - Black Diamond //////////
 
@@ -94,7 +176,7 @@
   A Machine has the following methods:
     - makeWidgets
         - This function takes in a number and increases widgets_made_count by that amount
-        - It also increases wear_and_tear_count by 1 for every 50
+        - It also increases wear_and_tear_count by 1 for every 50 widgets_made_count.
     - fixMachine
         - This function sets needs_reboot to true
     - reboot
@@ -102,6 +184,27 @@
         - The anonymous function should decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine{
+  constructor(){
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  }
+
+  makeWidgets(nbr){
+    this.widgets_made_count+= nbr;
+    this.wear_and_tear_count = this.widgets_made_count/50;
+  }
+
+  fixMachine(){
+    this.needs_reboot = true;
+  }
+
+  reboot(){
+    return () => {this.wear_and_tear_count -= 10;
+           this.needs_reboot = false;}
+  }
+
+}
 
 

@@ -21,7 +21,7 @@ var carDetails = {
   Use object destructuring to save the property values from the object carDetails into new variables. 
 */
 
-//Code Here
+const {color, make, model, year} = carDetails;
 
 
 
@@ -34,7 +34,7 @@ var carDetails = {
 */
 
 function greeting( obj ) {
-  //Code Here
+  let {firstName, lastName, title} = obj;
   
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
@@ -53,7 +53,10 @@ function greeting( obj ) {
   Sum up the values and return the total number.
 */
 
-//Code Here
+function totalPopulation(obj){
+  let {utah, california, texas, arizona} = obj;
+  return utah+california+texas+arizona;  //Total
+}
 
 
 
@@ -67,8 +70,14 @@ function greeting( obj ) {
   Push these new variables to an array and return the array. 
 */
 
-//Code Here
-
+function ingredients(obj){
+let {carb, fat, protein} = obj;
+arr = [];
+arr.push(carb);
+arr.push(fat);
+arr.push(protein);
+return arr;
+}
 
 
 ////////// PROBLEM 5 //////////
@@ -85,7 +94,10 @@ function greeting( obj ) {
   Find the smallest number of the three and return that number.
 */
 
-//Code Here
+function largeNumbers ({first, second, third}){
+  arr = [first, second, third];
+  return Math.min(...arr);
+}
 
 
 
@@ -97,6 +109,38 @@ function greeting( obj ) {
   Find the longest array and return that array.
 */
 
-//Code Here
+function numberGroups({a, b, c}){
+     let aLen = a.length;
+     console.log(a.length);
+     let bLen = b.length;
+     console.log(b.length);
+     let cLen = c.length;
+     console.log(c.length);
+     longArr = [aLen, bLen, cLen];
+     //console.log(longArr);
+     let arrNum = 0
+     for (x=0;x<=longArr.length-1;x++){
+        for (y=0;y<longArr.length-1 ;y++){
+          if (longArr[y] > longArr[x]){
+            arrNum = x;
+          }
+        }
+     }
+     if (arrNum == 1){
+      console.log("a");
+       console.log(a);
+        return a;
+     }
+     if (arrNum == 2){
+      console.log("b")
+      console.log(b);
+       return b;
+     }
+     if (arrNum == 3){
+      console.log("c")
+      console.log(c);
+       return c;
+     }
+}
 
 
